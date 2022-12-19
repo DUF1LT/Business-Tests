@@ -1,23 +1,27 @@
+import { QuestionTheme } from "./QuestionTheme";
 import { QuestionType } from "./QuestionType";
 
 type QuestionBase = {
     id: string;
     question: string;
+    theme: QuestionTheme;
 }
 
-type MultipleChoiceQuestion = QuestionBase & {
+export type MultipleChoiceQuestion = QuestionBase & {
     type: QuestionType.MultipleChoice;
     options: string[];
     answer: string[];
+    withFormula: boolean;
 }
 
-type SingleChoiceQuestion = QuestionBase & {
+export type SingleChoiceQuestion = QuestionBase & {
     type: QuestionType.SingleChoice;
     options: string[];
     answer: string;
+    withFormula: boolean;
 }
 
-type TextQuestion = QuestionBase & {
+export type TextQuestion = QuestionBase & {
     type: QuestionType.Text;
     answer: string;
 }
