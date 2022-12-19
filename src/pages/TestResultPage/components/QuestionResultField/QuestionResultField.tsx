@@ -112,7 +112,10 @@ export function QuestionResultField({
     };
 
     const renderText = (question: TextQuestion, questionAnswer: QuestionAnswer) => {
-        if (question.answer === questionAnswer.answer as string) {
+        const userAnswer = (questionAnswer.answer as string).trim();
+        const answer = questionAnswer.answer as string[];
+
+        if (answer.includes(userAnswer)) {
             return (
                 <InputGroup borderColor='green.500' colorScheme='green'>
                     <InputLeftElement
@@ -121,7 +124,7 @@ export function QuestionResultField({
                     />
                     <Input
                         readOnly
-                        value={question.answer}
+                        value={userAnswer}
                         color='green.500'
                         colorScheme='green'
                     />
@@ -138,7 +141,7 @@ export function QuestionResultField({
                     />
                     <Input
                         readOnly
-                        value={questionAnswer.answer}
+                        value={userAnswer}
                         color='red.500'
                         colorScheme='red'
                         focusBorderColor="red.500"
@@ -151,7 +154,7 @@ export function QuestionResultField({
                     />
                     <Input
                         readOnly
-                        value={question.answer}
+                        value={answer[0]}
                         color='green.500'
                         colorScheme='green'
                         focusBorderColor="green.500"
