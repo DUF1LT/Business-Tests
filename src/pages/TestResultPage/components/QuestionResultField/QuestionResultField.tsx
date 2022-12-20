@@ -113,7 +113,7 @@ export function QuestionResultField({
 
     const renderText = (question: TextQuestion, questionAnswer: QuestionAnswer) => {
         const userAnswer = (questionAnswer.answer as string).trim();
-        const answer = questionAnswer.answer as string[];
+        const answer = question.answer as string[];
 
         if (answer.includes(userAnswer)) {
             return (

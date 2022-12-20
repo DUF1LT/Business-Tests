@@ -12,10 +12,13 @@ import { QuestionAnswer } from "types/QuestionAnswer";
 import { QuestionField } from "./components/QuestionField";
 
 import './Test.scss';
+import { QuestionType } from "types/QuestionType";
 
 export type TestFormValues = {
-    [key: string]: string | number | number[],
+    [key: string]: string | string[],
 }
+
+const sortStrings = (a: string, b: string) => a.localeCompare(b);
 
 export function Test() {
     const { theme } = useParams();
@@ -31,18 +34,34 @@ export function Test() {
         const correctAnswers = questiondIds.reduce((acc, value) => {
             const question = questions.find(f => f.id === value);
 
-            let isAnswerCorrect = false;
+            switch (question?.type) {
+                case QuestionType.MultipleChoice: {
+                    const answer = question.answer;
+                    const userAnswer = !Array.isArray(values[value]) ? [] : values[value] as string[];
 
-            if (Array.isArray(values[value]) && JSON.stringify(question?.answer) === JSON.stringify(values[value])) {
-                isAnswerCorrect = true;
-            }
-
-            if (question?.answer === values[value]) {
-                isAnswerCorrect = true;
-            }
-
-            if (isAnswerCorrect) {
-                acc++;
+                    if (JSON.stringify(answer.sort(sortStrings)) === JSON.stringify(userAnswer?.sort(sortStrings))) {
+                        acc++;
+                    }
+                    break;
+                }
+                case QuestionType.SingleChoice: {
+                    const answer = question.answer;
+                    const userAnswer = values[value] as string;
+                    if (userAnswer === answer) {
+                        acc++;
+                    }
+                    break;
+                }
+                case QuestionType.Text: {
+                    const answer = question.answer;
+                    const userAnswer = values[value] as string;
+                    if (answer.includes(userAnswer?.trim())) {
+                        acc++;
+                    }
+                    break;
+                }
+                default:
+                    return acc;
             }
 
             return acc;

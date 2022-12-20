@@ -1,5 +1,5 @@
 import { Control, Controller, UseFormRegister } from "react-hook-form";
-import { Checkbox, FormControl, Input, Radio, RadioGroup, Stack } from "@chakra-ui/react";
+import { Checkbox, FormControl, Input, Radio, RadioGroup, Stack, Tooltip } from "@chakra-ui/react";
 import { MathJax } from "better-react-mathjax";
 
 import { TestFormValues } from "pages/Test/Test";
@@ -7,6 +7,7 @@ import { MultipleChoiceQuestion, Question, SingleChoiceQuestion, TextQuestion } 
 import { QuestionType } from "types/QuestionType";
 
 import './QuestionField.scss';
+import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
 interface Props {
     index: number;
@@ -87,11 +88,30 @@ export function QuestionField({
         }
     };
 
+    const renderTip = () => {
+        if (question.type === QuestionType.Text) {
+            return (
+                <Tooltip
+                    label='Пример ответа на текстовый вопрос:  "24.56 10200.20 123.45"'
+                    color='teal'
+                    bg='white'
+                    placement='top-end'
+                    width='72'
+                >
+                    <QuestionOutlineIcon />
+                </Tooltip >
+            )
+        }
+    }
+
     return (
         <div className="question-field">
-            <p className="question-title">
-                {index}. {question.question}
-            </p>
+            <div className="question-header">
+                {renderTip()}
+                <p className="question-title">
+                    {index}. {question.question}
+                </p>
+            </div>
             {renderOptions(question)}
         </div>
     );

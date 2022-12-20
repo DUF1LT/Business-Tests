@@ -7,8 +7,8 @@ import './Home.scss';
 
 const themes: QuestionTheme[] = [
     QuestionTheme.OrganizationalLegalForms,
-    QuestionTheme.Amortization,
     QuestionTheme.FixedCapital,
+    QuestionTheme.Amortization,
     QuestionTheme.WorkingCapital,
     QuestionTheme.Profitability,
     QuestionTheme.All,

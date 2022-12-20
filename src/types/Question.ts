@@ -23,7 +23,7 @@ export type SingleChoiceQuestion = QuestionBase & {
 
 export type TextQuestion = QuestionBase & {
     type: QuestionType.Text;
-    answer: string;
+    answer: string[];
 }
 
 export type Question = MultipleChoiceQuestion | SingleChoiceQuestion | TextQuestion;

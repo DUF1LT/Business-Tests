@@ -13,6 +13,10 @@ export function TestResultPage() {
     const testResult = location.state as TestResult;
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0
+        });
+
         if (!testResult) {
             navigate('/');
         }
