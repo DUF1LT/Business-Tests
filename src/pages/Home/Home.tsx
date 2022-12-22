@@ -10,7 +10,7 @@ const themes: QuestionTheme[] = [
     QuestionTheme.FixedCapital,
     QuestionTheme.Amortization,
     QuestionTheme.WorkingCapital,
-    QuestionTheme.Profitability,
+    QuestionTheme.ProfitProfitabilityCost,
     QuestionTheme.All,
 ];
 

@@ -3,7 +3,7 @@ import { QuestionTheme } from "types/QuestionTheme";
 const themeToLabel: Record<QuestionTheme, string> = {
     [QuestionTheme.OrganizationalLegalForms]: 'Организационно-правовые формы',
     [QuestionTheme.Amortization]: 'Амортизация',
-    [QuestionTheme.Profitability]: 'Рентабельность',
+    [QuestionTheme.ProfitProfitabilityCost]: 'Прибыль, Рентабельность, Себестоимость',
     [QuestionTheme.FixedCapital]: 'Основные средства',
     [QuestionTheme.WorkingCapital]: 'Оборотные средства',
     [QuestionTheme.All]: 'Все темы',

@@ -92,7 +92,7 @@ export function QuestionField({
         if (question.type === QuestionType.Text) {
             return (
                 <Tooltip
-                    label='Пример ответа на текстовый вопрос:  "24.56 10200.20 123.45"'
+                    label='Пример ответа на текстовый вопрос:  "24.56 10200.2 123.45"'
                     color='teal'
                     bg='white'
                     placement='top-end'
